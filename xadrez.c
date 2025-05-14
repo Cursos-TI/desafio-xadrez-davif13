@@ -1,57 +1,117 @@
 #include <stdio.h>
 
+// =============================
+// Função recursiva para Torre
+// =============================
+void moverTorre(int casas) {
+    if (casas == 0) return;
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
+
+// =============================
+// Função recursiva para Bispo
+// =============================
+void moverBispoRecursivo(int casas) {
+    if (casas == 0) return;
+    printf("Cima Direita\n");
+    moverBispoRecursivo(casas - 1);
+}
+
+// =============================
+// Função recursiva para Rainha
+// =============================
+void moverRainha(int casas) {
+    if (casas == 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+// =============================
+// Função com loops aninhados para Bispo (extra)
+// Loop externo: vertical (cima)
+// Loop interno: horizontal (direita)
+// =============================
+void moverBispoComLoops(int movimentos) {
+    printf("\nMovimento do Bispo com loops aninhados:\n");
+
+    for (int i = 0; i < movimentos; i++) {
+        for (int j = 0; j < 1; j++) { // 1 passo para a direita por movimento
+            printf("Cima Direita\n");
+        }
+    }
+}
+
+// =============================
+// Movimento complexo do Cavalo
+// "L" para cima e direita:
+// Duas casas para cima, uma para direita
+// Usando loops aninhados com múltiplas variáveis
+// =============================
+void moverCavalo() {
+    printf("\nMovimento do Cavalo:\n");
+
+    int movimentosVerticais = 2;
+    int movimentosHorizontais = 1;
+
+    // Loop externo controla tentativas de movimento
+    for (int i = 0; i < 3; i++) {  // simula até 3 tentativas (apenas 1 válida neste exemplo)
+        int sucesso = 1;
+
+        for (int j = 0; j < movimentosVerticais + movimentosHorizontais; j++) {
+            if (j < movimentosVerticais) {
+                printf("Cima\n");
+            } else if (j == movimentosVerticais) {
+                printf("Direita\n");
+            } else {
+                // Movimento além do esperado, pular
+                sucesso = 0;
+                break;
+            }
+
+            // Condicional para simular controle de fluxo
+            if (j == 1 && i > 0) {
+                continue;
+            }
+        }
+
+        if (sucesso) {
+            break;  // Interrompe após um movimento completo
+        }
+    }
+}
+
 int main() {
     // =============================
-    // Movimento da Torre (FOR loop)
+    // Torre
     // =============================
     int casasTorre = 5;
     printf("Movimento da Torre:\n");
-    for (int i = 0; i < casasTorre; i++) {
-        printf("Direita\n");
-    }
+    moverTorre(casasTorre);
 
-    // ================================
-    // Movimento do Bispo (WHILE loop)
-    // ================================
+    // =============================
+    // Bispo com recursão
+    // =============================
     int casasBispo = 5;
-    int i = 0;
-    printf("\nMovimento do Bispo:\n");
-    while (i < casasBispo) {
-        printf("Cima Direita\n");
-        i++;
-    }
+    printf("\nMovimento do Bispo (recursivo):\n");
+    moverBispoRecursivo(casasBispo);
 
-    // ====================================
-    // Movimento da Rainha (DO-WHILE loop)
-    // ====================================
+    // =============================
+    // Bispo com loops aninhados (extra)
+    // =============================
+    moverBispoComLoops(casasBispo);
+
+    // =============================
+    // Rainha com recursão
+    // =============================
     int casasRainha = 8;
-    int j = 0;
     printf("\nMovimento da Rainha:\n");
-    do {
-        printf("Esquerda\n");
-        j++;
-    } while (j < casasRainha);
+    moverRainha(casasRainha);
 
-    // ===============================
-    // Movimento do Cavalo (FOR + WHILE)
-    // ===============================
-    int movimentosVerticais = 2;  // Duas casas para baixo
-    int movimentosHorizontais = 1; // Uma casa para a esquerda
-
-    printf("\nMovimento do Cavalo:\n");
-
-    // Loop externo (obrigatoriamente um FOR): simula movimentos verticais
-    for (int k = 0; k < movimentosVerticais; k++) {
-        printf("Baixo\n");
-        }
-    }
-
-    // Movimento horizontal após os dois movimentos verticais
-    int l = 0;
-    while (l < movimentosHorizontais) {
-        printf("Esquerda\n");
-        l++;
-    }
+    // =============================
+    // Cavalo com loops aninhados complexos
+    // =============================
+    moverCavalo();
 
     return 0;
 }

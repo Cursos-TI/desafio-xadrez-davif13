@@ -1,14 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    // Movimento da Torre: 5 casas para a direita usando for
+    // =============================
+    // Movimento da Torre (FOR loop)
+    // =============================
     int casasTorre = 5;
     printf("Movimento da Torre:\n");
     for (int i = 0; i < casasTorre; i++) {
         printf("Direita\n");
     }
 
-    // Movimento do Bispo: 5 casas na diagonal para cima e à direita usando while
+    // ================================
+    // Movimento do Bispo (WHILE loop)
+    // ================================
     int casasBispo = 5;
     int i = 0;
     printf("\nMovimento do Bispo:\n");
@@ -17,7 +21,9 @@ int main() {
         i++;
     }
 
-    // Movimento da Rainha: 8 casas para a esquerda usando do-while
+    // ====================================
+    // Movimento da Rainha (DO-WHILE loop)
+    // ====================================
     int casasRainha = 8;
     int j = 0;
     printf("\nMovimento da Rainha:\n");
@@ -25,6 +31,27 @@ int main() {
         printf("Esquerda\n");
         j++;
     } while (j < casasRainha);
+
+    // ===============================
+    // Movimento do Cavalo (FOR + WHILE)
+    // ===============================
+    int movimentosVerticais = 2;  // Duas casas para baixo
+    int movimentosHorizontais = 1; // Uma casa para a esquerda
+
+    printf("\nMovimento do Cavalo:\n");
+
+    // Loop externo (obrigatoriamente um FOR): simula movimentos verticais
+    for (int k = 0; k < movimentosVerticais; k++) {
+        printf("Baixo\n");
+        }
+    }
+
+    // Movimento horizontal após os dois movimentos verticais
+    int l = 0;
+    while (l < movimentosHorizontais) {
+        printf("Esquerda\n");
+        l++;
+    }
 
     return 0;
 }
